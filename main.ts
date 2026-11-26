@@ -12,6 +12,9 @@ const ROAST =
 if (ROAST.length < 1 || ROAST.length > 200 || ROAST.trim().length === 0) {
   throw new Error(`roast is ${ROAST.length} chars; must be 1–200`);
 }
+if (ROAST.includes("\n")) {
+  throw new Error("roast must be a single line");
+}
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
